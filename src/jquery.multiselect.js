@@ -343,6 +343,16 @@ $.widget("ui.multiselect", {
 		this.menu.find('input').attr('disabled', (flag ? 'disabled' : '')).parent()[ flag ? 'addClass' : 'removeClass' ]('ui-state-disabled');
 		this.element.attr('disabled', (flag ? 'disabled' : ''));
 	},
+
+	values: function(){
+			var o = this.options,
+			$inputs = this.labels.find('input'),
+			$checked = $inputs.filter(':checked');
+
+			values = [];
+			$checked.each(function(){values.push($(this).val())});
+			return values;
+	},
 	
 	// open the menu
 	open: function(e){
